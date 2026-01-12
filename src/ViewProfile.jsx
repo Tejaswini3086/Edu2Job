@@ -18,7 +18,6 @@ function ViewProfile({ darkMode, toggleTheme }) {
   const [bio, setBio] = useState("");
   const [loadingBio, setLoadingBio] = useState(false);
 
-  // NEW FEATURE: Profile Completeness Calculation Logic
   const calculateCompleteness = () => {
     if (!student) return 0;
     const fields = ['skills', 'internships', 'projects', 'certifications', 'linkedin', 'github'];
@@ -236,7 +235,7 @@ function ViewProfile({ darkMode, toggleTheme }) {
   );
 
   const badge = getCGPABadge(student.cgpa);
-  const profileProgress = calculateCompleteness(); // Integrated completeness value
+  const profileProgress = calculateCompleteness(); 
 
   return (
     <>
@@ -244,7 +243,7 @@ function ViewProfile({ darkMode, toggleTheme }) {
         <div className="nav-brand">Edu2Job Prediction</div>
         
         <div className="nav-menu-container" style={{display: 'flex', alignItems: 'center', gap: '15px'}}>
-            {/* NEW FEATURE: Global Profile Strength Indicator */}
+            
             <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '2px' }}>
                 <span style={{ fontSize: '0.65rem', color: '#94a3b8', fontWeight: 'bold' }}>STRENGTH: {profileProgress}%</span>
                 <div style={{ width: '80px', height: '4px', background: 'rgba(255,255,255,0.1)', borderRadius: '10px' }}>
@@ -308,7 +307,7 @@ function ViewProfile({ darkMode, toggleTheme }) {
 
       <div className={`view-container ${showResult ? 'split-mode' : ''}`} style={{marginTop: '80px', maxWidth: '1000px', margin: '80px auto'}}>
         <div className="profile-card">
-          {/* NEW FEATURE: Conditional Action Banner */}
+        
           {profileProgress < 85 && !showResult && (
               <div style={{ background: 'rgba(245, 158, 11, 0.1)', border: '1px solid rgba(245, 158, 11, 0.3)', padding: '12px 18px', borderRadius: '12px', marginBottom: '25px', color: '#fbbf24', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
                   💡 <span>Boost your profile strength! Add <strong>Projects</strong> or <strong>Certifications</strong> to refine AI accuracy.</span>
@@ -466,7 +465,6 @@ function ViewProfile({ darkMode, toggleTheme }) {
                       </div>
                   </div>
                   
-                  {/* Feedback widget remains exactly as you had it */}
                   <FeedbackWidget 
                     userEmail={student.email} 
                     suggestedJob={prediction.topMatch.role} 

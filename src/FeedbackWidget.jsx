@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 const FeedbackWidget = ({ userEmail, suggestedJob }) => {
     const [rating, setRating] = useState(0);
-    const [hoverRating, setHoverRating] = useState(0); // Existing Feature: Star hover effect
+    const [hoverRating, setHoverRating] = useState(0);
     const [comment, setComment] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = async () => {
-        // Validation logic preserved
+      
         if (rating === 0) {
             alert("Please select a star rating!");
             return;
@@ -18,7 +18,7 @@ const FeedbackWidget = ({ userEmail, suggestedJob }) => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    userEmail: userEmail, // Prop used correctly for Admin Dashboard
+                    userEmail: userEmail, 
                     rating: rating,
                     comment: comment,
                     suggestedJob: suggestedJob
@@ -27,7 +27,7 @@ const FeedbackWidget = ({ userEmail, suggestedJob }) => {
 
             if (response.ok) {
                 setSubmitted(true);
-                // Existing Feature: Auto-scroll to confirmation message
+                
                 window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
             }
         } catch (error) {
@@ -36,7 +36,6 @@ const FeedbackWidget = ({ userEmail, suggestedJob }) => {
         }
     };
 
-    // Existing Feature: Success state UI
     if (submitted) return (
         <div style={{
             color: '#4ade80', 
@@ -63,7 +62,6 @@ const FeedbackWidget = ({ userEmail, suggestedJob }) => {
             <h4 style={{ color: '#2E8B57', marginTop: 0 }}>Rate this Career Suggestion</h4>
             <p style={{fontSize: '0.8rem', color: '#94a3b8'}}>How relevant is "{suggestedJob}" to your profile?</p>
             
-            {/* Existing Feature: Interactive Star Rating with Hover */}
             <div style={{ fontSize: '24px', cursor: 'pointer', marginBottom: '15px' }}>
                 {[1, 2, 3, 4, 5].map(star => (
                     <span 
@@ -85,7 +83,7 @@ const FeedbackWidget = ({ userEmail, suggestedJob }) => {
             <textarea 
                 placeholder="Any comments on the accuracy?" 
                 value={comment}
-                maxLength="200" // Existing Feature: 200 character limit
+                maxLength="200" 
                 onChange={(e) => setComment(e.target.value)}
                 style={{ 
                     width: '100%', 
@@ -101,7 +99,6 @@ const FeedbackWidget = ({ userEmail, suggestedJob }) => {
                 rows="3"
             />
             
-            {/* Existing Feature: Real-time character count display */}
             <div style={{ textAlign: 'right', fontSize: '0.7rem', color: '#64748b', marginBottom: '10px' }}>
                 {comment.length}/200 characters
             </div>

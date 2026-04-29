@@ -4,10 +4,7 @@ import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import './App.css'; 
-
-// --- 1. THE MASSIVE SKILL DATABASE (30+ ROLES) ---
 const JOB_REQUIREMENTS = {
-  // === SOFTWARE DEVELOPMENT ===
   "Software Engineer": { 
       req: ["Java", "C++", "DSA", "SQL", "System Design", "Git"], 
       steps: [
@@ -57,7 +54,6 @@ const JOB_REQUIREMENTS = {
       ]
   },
 
-  // === DATA & AI ===
   "Data Scientist": { 
       req: ["Python", "Pandas", "NumPy", "SQL", "Machine Learning", "Statistics"], 
       steps: [
@@ -133,7 +129,6 @@ const JOB_REQUIREMENTS = {
       ]
   },
 
-  // === SPECIALIZED TECH ===
   "Blockchain Developer": {
       req: ["Solidity", "Web3.js", "Smart Contracts", "Cryptography", "Ethereum"],
       steps: [
@@ -175,7 +170,6 @@ const JOB_REQUIREMENTS = {
       ]
   },
 
-  // === DESIGN & CREATIVE ===
   "UI/UX Designer": {
       req: ["Figma", "Wireframing", "Prototyping", "User Research", "Color Theory"],
       steps: [
@@ -209,7 +203,6 @@ const JOB_REQUIREMENTS = {
       ]
   },
 
-  // === BUSINESS & OTHERS ===
   "Product Manager": {
       req: ["Agile", "Scrum", "User Stories", "Roadmapping", "Jira"],
       steps: [
@@ -272,10 +265,8 @@ function Roadmap() {
 
   const jobData = JOB_REQUIREMENTS[role] || DEFAULT_JOB;
 
-  // --- INTELLIGENT GAP ANALYSIS LOGIC ---
   const mySkillsRaw = userSkills ? userSkills.toLowerCase().split(',').map(s => s.trim()) : [];
   
-  // Identify Matches and Gaps
   const matchedSkills = jobData.req.filter(reqSkill => 
       mySkillsRaw.some(mySkill => mySkill.includes(reqSkill.toLowerCase()))
   );
@@ -288,12 +279,12 @@ function Roadmap() {
   const matchPercent = total > 0 ? Math.round((matchedSkills.length / total) * 100) : 0;
   const gapPercent = 100 - matchPercent;
 
-  // --- DYNAMIC ADVICE GENERATOR ---
+ 
   let adviceText = "";
   if (matchPercent === 100) {
       adviceText = "🎉 Perfect Match! You are ready to apply for jobs.";
   } else if (missingSkills.length > 0) {
-      // Pick the first missing skill to recommend
+    
       const nextSkill = missingSkills[0];
       const potentialScore = Math.round(((matchedSkills.length + 1) / total) * 100);
       
@@ -331,7 +322,7 @@ function Roadmap() {
         <h1 style={{textAlign: 'center', marginBottom: '5px'}}>🚀 Career Roadmap</h1>
         <h2 style={{textAlign: 'center', color: '#4ade80'}}>{role}</h2>
 
-        {/* --- DYNAMIC ADVICE BANNER --- */}
+     
         <div style={{
             background: 'rgba(74, 222, 128, 0.15)', 
             border: '1px solid #4ade80', 
@@ -346,10 +337,9 @@ function Roadmap() {
             💡 {adviceText}
         </div>
 
-        {/* --- GRAPHS & SKILL LIST --- */}
         <div style={{display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '30px'}}>
             
-            {/* Pie Chart */}
+        
             <div style={{flex: 1, background: 'rgba(255,255,255,0.05)', borderRadius: '15px', padding: '20px', textAlign: 'center'}}>
                 <h3>Match Analysis</h3>
                 <div style={{height: '250px'}}>
@@ -368,7 +358,6 @@ function Roadmap() {
                 </div>
             </div>
 
-            {/* Detailed Skill Checklist */}
             <div style={{flex: 1, background: 'rgba(255,255,255,0.05)', borderRadius: '15px', padding: '20px'}}>
                 <h3>Skill Checklist</h3>
                 <div style={{marginTop: '15px', display: 'flex', flexWrap: 'wrap', gap: '8px'}}>
@@ -379,7 +368,7 @@ function Roadmap() {
                         </span>
                     ))}
                     
-                    {/* Show Missing Skills (Red) */}
+             
                     {missingSkills.map((skill, i) => (
                         <span key={i} style={{padding: '8px 12px', borderRadius: '8px', background: 'rgba(239, 68, 68, 0.2)', border: '1px solid #ef4444', fontSize: '0.9rem'}}>
                             ❌ {skill}
@@ -395,7 +384,6 @@ function Roadmap() {
             </div>
         </div>
 
-        {/* --- LEARNING PATH --- */}
         <h3 style={{marginTop: '40px', borderBottom: '2px solid #4ade80', display: 'inline-block'}}>
             🗺️ Recommended Learning Path
         </h3>

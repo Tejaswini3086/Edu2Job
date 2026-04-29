@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-// Importing the file we just edited
 import EditProfile from './EditProfile'; 
 import Login from './Login';
 import Register from "./Signup";

@@ -7,7 +7,7 @@ import './App.css';
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false); // New: prevent double clicks
+  const [loading, setLoading] = useState(false); 
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -15,7 +15,7 @@ function Signup() {
     setLoading(true);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      // Success! Move to setup
+  
       navigate('/edit-profile'); 
     } catch (error) {
       alert(error.message);
@@ -25,7 +25,7 @@ function Signup() {
   };
 
   return (
-    /* Use minHeight here if CSS isn't working */
+   
     <div className="bg-signup-img" style={{ minHeight: '100vh' }}>
       <div className="glass-card">
         <h1 className="brand-title">Edu2Job</h1>

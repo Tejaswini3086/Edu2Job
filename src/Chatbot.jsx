@@ -65,7 +65,7 @@ function Chatbot() {
 
   return (
     <>
-      {/* GLOWING FLOATING BUTTON */}
+     
       <button 
         onClick={toggleChat} 
         style={{
@@ -82,7 +82,6 @@ function Chatbot() {
         {isOpen ? '❌' : '🤖'}
       </button>
 
-      {/* CHAT WINDOW */}
       {isOpen && (
         <div style={{
             position: 'fixed', 
@@ -91,18 +90,18 @@ function Chatbot() {
             transform: isFullScreen ? 'translate(50%, 50%)' : 'none',
             width: isFullScreen ? '90vw' : '400px', 
             height: isFullScreen ? '85vh' : '600px', 
-            background: 'rgba(15, 23, 42, 0.95)', // Deep dark blue-black
+            background: 'rgba(15, 23, 42, 0.95)', 
             borderRadius: '20px', 
             boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
             display: 'flex', 
             flexDirection: 'column', 
             overflow: 'hidden',
             zIndex: 1001, 
-            border: '1px solid rgba(46, 139, 87, 0.5)', // Sea Green Border
-            backdropFilter: 'blur(15px)', // Glass effect
+            border: '1px solid rgba(46, 139, 87, 0.5)', 
+            backdropFilter: 'blur(15px)', 
             transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
         }}>
-            {/* VIBRANT HEADER */}
+        
             <div style={{
                 background: '#2E8B57', 
                 padding: '18px', 
@@ -134,7 +133,6 @@ function Chatbot() {
                 </button>
             </div>
 
-            {/* MESSAGES AREA */}
             <div style={{flex: 1, padding: '20px', overflowY: 'auto', background: 'transparent'}}>
                 {messages.map((msg, idx) => (
                     <div key={idx} style={{
@@ -160,7 +158,6 @@ function Chatbot() {
                 <div ref={messagesEndRef} />
             </div>
 
-            {/* INPUT AREA */}
             <div style={{padding: '15px', background: 'rgba(30, 41, 59, 0.5)', display: 'flex', gap: '12px', borderTop: '1px solid rgba(46, 139, 87, 0.3)'}}>
                 <input 
                     type="text" 

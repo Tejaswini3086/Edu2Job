@@ -4,7 +4,6 @@ import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import './App.css'; 
 
-// --- LIST OF JOB ROLES FOR DROPDOWN ---
 const JOB_ROLES = [
   "Software Engineer", "Frontend Developer", "Backend Developer", "Full Stack Developer",
   "Data Scientist", "Data Analyst", "AI Engineer", "Big Data Engineer",
@@ -22,16 +21,14 @@ function CreateProfile() {
   const [userEmail, setUserEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Form State
   const [formData, setFormData] = useState({
     name: '', rollNumber: '', college: '', currentYear: '',
     degree: '', specialization: '', cgpa: '', year: '',
     skills: '', internships: '', interests: '', 
-    dreamJob: '', // Now selected from dropdown
+    dreamJob: '', 
     certifications: '', percentage: ''
   });
 
-  // Check Login & Load Existing Data
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
         if (user) {
@@ -60,7 +57,6 @@ function CreateProfile() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Resume Upload Logic
   const handleResumeUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -120,8 +116,7 @@ function CreateProfile() {
       <div className="profile-card" style={{width: '90%', maxWidth: '800px', padding: '30px'}}>
         
         <h2 style={{color: 'white', textAlign: 'center', marginBottom: '20px'}}>📝 Edit Your Profile</h2>
-        
-        {/* RESUME UPLOAD SECTION */}
+     
         <div style={{background: 'rgba(74, 222, 128, 0.1)', padding: '20px', borderRadius: '10px', marginBottom: '30px', border: '1px dashed #4ade80'}}>
             <label style={{display:'block', marginBottom:'10px', color: '#4ade80', fontWeight: 'bold', fontSize: '1.1rem'}}>
                 📄 Step 1: Auto-Fill with Resume (Optional)
@@ -202,7 +197,6 @@ function CreateProfile() {
                 <textarea name="interests" placeholder="Coding, Reading, Chess..." value={formData.interests} onChange={handleChange} className="full-width" rows="2" />
             </div>
 
-            {/* --- NEW DROPDOWN FOR DREAM JOB --- */}
             <div className="form-group" style={{marginBottom: '30px'}}>
                 <label className="input-label" style={{color: '#f59e0b'}}>⭐ Dream Job Goal (Scroll to Select)</label>
                 <select 

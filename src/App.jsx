@@ -29,7 +29,7 @@ function App() {
   const toggleTheme = () => setDarkMode(!darkMode);
 
   return (
-    <Router>
+    <Router basename="/Edu2Job">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
